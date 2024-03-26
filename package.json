@@ -1,12 +1,11 @@
 {
-  "dependencies": {
-    "ejs": "^3.1.9",
-    "express": "^4.19.2",
-    "mongoose": "^8.2.3"
-  },
   "name": "trail-trove",
   "version": "1.0.0",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PrayagTandon/Trail-Trove.git"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +13,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "mongoose": "^8.2.3"
+  }
 }
