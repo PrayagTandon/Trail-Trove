@@ -16,14 +16,13 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.get('/', (req, res) => {
-    res.render('home');
+app.get('/campgrunds', async (req, res) => {
+    const campgrunds = await Campground.find();
+    res.render('campgrounds/index');
 });
 
-app.get('/makecampground', async (req, res) => {
-    const camp = new Campground({ title: 'My Backyard', description: 'Cheap Camping' });
-    await camp.save();
-    res.send(camp);
+app.get('/', (req, res) => {
+    res.render('home');
 });
 
 app.listen(3000, () => {
