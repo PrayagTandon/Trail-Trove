@@ -16,7 +16,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.get('/campgrunds', async (req, res) => {
+app.get('/campgrounds', async (req, res) => {
     const campgrunds = await Campground.find();
     res.render('campgrounds/index');
 });
