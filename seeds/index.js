@@ -22,7 +22,7 @@ async function seedImg() {
                 collections: 11536948,
             },
         })
-        return resp.data.urls.small
+        return resp.data.map((img) => img.urls.small);
     } catch (err) {
         console.error(err)
     }
@@ -32,17 +32,20 @@ const seedDB = async () => {
     await Campground.deleteMany({});
     for (let i = 0; i < 30; i++) {
         // setup
-        const placeSeed = Math.floor(Math.random() * places.length)
-        const descriptorsSeed = Math.floor(Math.random() * descriptors.length)
-        const citySeed = Math.floor(Math.random() * cities.length)
+        const imgs = await seedImg();
+        const placeSeed = Math.floor(Math.random() * places.length);
+        const descriptorsSeed = Math.floor(Math.random() * descriptors.length);
+        const citySeed = Math.floor(Math.random() * cities.length);
+        const price = Math.floor(Math.random() * 20) + 10;
 
         // seed data into campground
         const camp = new Campground({
-            imageUrl: await seedImg(),
+            image: sample(imgs),
             title: `${descriptors[descriptorsSeed]} ${places[placeSeed]}`,
             location: `${cities[citySeed].city}, ${cities[citySeed].state}`,
             description:
                 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis, nihil tempora vel aspernatur quod aliquam illum! Iste impedit odio esse neque veniam molestiae eligendi commodi minus, beatae accusantium, doloribus quo!',
+            price
         })
         await camp.save();
     };
