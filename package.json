@@ -12,7 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Book your beautiful Campground today!",
   "dependencies": {
     "ejs": "^3.1.9",
     "ejs-mate": "^4.0.0",
